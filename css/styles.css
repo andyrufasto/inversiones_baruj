@@ -1,0 +1,90 @@
+/* Base styles */
+body {
+    background-color: #F9F9F7;
+    color: #0A1128;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    overflow-x: hidden;
+    perspective: 1000px;
+}
+
+.dark body {
+    background-color: #0A1128;
+    color: #F9F9F7;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cccccc; border-radius: 10px; }
+.dark ::-webkit-scrollbar-thumb { background: #1C2742; }
+::-webkit-scrollbar-thumb:hover { background: #2596BE; }
+
+/* Glassmorphism Standard */
+.glass-panel {
+    background: rgba(249, 249, 247, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(10, 17, 40, 0.05);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+.dark .glass-panel {
+    background: rgba(10, 17, 40, 0.65);
+    border: 1px solid rgba(249, 249, 247, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+.glass-panel:hover {
+    border-color: rgba(37, 150, 190, 0.4);
+    box-shadow: 0 15px 40px -10px rgba(37, 150, 190, 0.25);
+}
+
+/* Hero Background Parallax Container */
+#hero-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    pointer-events: none;
+    overflow: hidden;
+    transition: opacity 0.5s ease;
+}
+
+/* Gradients & Overlays */
+.text-gradient {
+    background: linear-gradient(to right, #0A1128, #2596BE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.dark .text-gradient {
+    background: linear-gradient(to right, #F9F9F7, #2596BE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-overlay {
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(to bottom, rgba(249,249,247,0.1), rgba(249,249,247,0.8));
+    pointer-events: none;
+}
+.dark .section-overlay {
+    background: linear-gradient(to bottom, rgba(10,17,40,0.1), rgba(10,17,40,0.9));
+}
+
+/* SVG Animation Helpers */
+.svg-stroke-anim {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* 3D Icon Container for Physics */
+.icon-3d-wrapper {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    will-change: transform;
+}
