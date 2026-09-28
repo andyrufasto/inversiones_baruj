@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="dark scroll-smooth">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +10,9 @@
     <meta property="og:title" content="INVERSIONES BARUJ S.A.C - Servicios Generales Premium">
     <meta property="og:description" content="Soluciones confiables y resultados que duran en gasfitería, pintura, drywall, electricidad y climatización.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"> <!-- Reemplazar con URL de tu logo corporativo -->
+    <meta property="og:image" content="https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
     
-    <!-- Google Fonts: Manrope (Sans) y Playfair Display (Serif) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
@@ -171,18 +171,24 @@
                 <a href="https://wa.me/51969327351" target="_blank" class="text-brand-cerulean hover:text-opacity-80 transition-opacity text-xl" title="Contactar por WhatsApp" aria-label="Escribirnos por WhatsApp">
                     <i class="fa-brands fa-whatsapp"></i>
                 </a>
-                <button id="theme-toggle" class="text-brand-textLight dark:text-brand-bone hover:text-brand-cerulean transition-colors text-lg active:scale-90" aria-label="Alternar tema oscuro" title="Cambiar Tema">
-                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                <button class="theme-toggle text-brand-textLight dark:text-brand-bone hover:text-brand-cerulean transition-colors text-lg active:scale-90" aria-label="Alternar tema oscuro" title="Cambiar Tema">
+                    <i class="theme-icon fa-solid fa-moon"></i>
                 </button>
                 <a href="#contacto" class="px-6 py-2.5 bg-brand-cerulean text-white font-bold tracking-wide uppercase text-sm rounded-sm transition-all duration-300 shadow-[0_0_15px_rgba(37,150,190,0.3)] hover:shadow-[0_0_20px_rgba(37,150,190,0.6)] active:scale-95">
                     Cotizar
                 </a>
             </div>
 
-            <button class="md:hidden text-brand-textLight dark:text-brand-bone text-2xl flex items-center gap-4" aria-label="Abrir menú principal">
-                <a href="https://wa.me/51969327351" target="_blank" class="text-brand-cerulean" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                <i class="fa-solid fa-bars" id="mobile-menu-btn"></i>
-            </button>
+            <!-- Menú Móvil Actualizado -->
+            <div class="md:hidden flex items-center gap-4 text-brand-textLight dark:text-brand-bone text-2xl">
+                <a href="https://wa.me/51969327351" target="_blank" class="text-brand-cerulean text-xl" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <button class="theme-toggle hover:text-brand-cerulean transition-colors text-xl active:scale-90" aria-label="Alternar tema oscuro" title="Cambiar Tema">
+                    <i class="theme-icon fa-solid fa-moon"></i>
+                </button>
+                <button aria-label="Abrir menú principal" class="hover:text-brand-cerulean transition-colors">
+                    <i class="fa-solid fa-bars" id="mobile-menu-btn"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -461,28 +467,31 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <script>
+                        // Políticas mapeadas directamente a los archivos exactos en GitHub Pages
                         const policies = [
-                            "Política de Continuidad del Negocio",
-                            "Política de Diversidad y Equidad de Inclusión",
-                            "Política de Gestión de Calidad",
-                            "Política de Igualdad de Oportunidades en la Integración de Personal",
-                            "Política de Seguridad de la Información",
-                            "Política de Seguridad, Salud y Bienestar en el Trabajo",
-                            "Política y Reglamento Anticorrupción",
-                            "Política y Reglamento de Gestión Ambiental",
-                            "Políticas Fiscales y Tributarias"
+                            { name: "Política de Continuidad del Negocio", file: "Politica Continuidad Negocio.pdf" },
+                            { name: "Política de Diversidad y Equidad de Inclusión", file: "Politica de Diversidad y Equidad De Inclusion..pdf" },
+                            { name: "Política de Gestión de Calidad", file: "Politica de Gestion de Calidad.pdf" },
+                            { name: "Política de Igualdad de Oportunidades en la Integración de Personal", file: "Política de Igualdad de Oportunidades en la Integración de Personal.pdf" }, // Nota: Asegúrate que en GitHub este archivo se llame exactamente así y no esté truncado
+                            { name: "Política de Seguridad de la Información", file: "Politica de Seguridad de la Informacion.pdf" },
+                            { name: "Política de Seguridad, Salud y Bienestar en el Trabajo", file: "Politica Seguridad, Salus y Bienestar en el Trabajo..pdf" },
+                            { name: "Política y Reglamento Anticorrupción", file: "Politica y Reglamento Anticorrupcion.pdf" },
+                            { name: "Política y Reglamento de Gestión Ambiental", file: "Politica y Reglamento Gestion Ambiental.pdf" },
+                            { name: "Políticas Fiscales y Tributarias", file: "Politicas Fiscales y Tributarias..pdf" }
                         ];
                         
                         policies.forEach(policy => {
+                            // encodeURI previene que espacios o caracteres especiales rompan el enlace a GitHub Pages
+                            const fileUrl = `/politicas/${encodeURI(policy.file)}`;
                             document.write(`
                                 <div class="glass-panel p-6 rounded-2xl flex flex-col justify-between h-full gs-stagger-policy group hover:bg-brand-cerulean/5">
                                     <div class="flex items-start gap-4 mb-6">
                                         <div class="mt-1 text-brand-cerulean text-2xl group-hover:scale-110 transition-transform"><i class="fa-regular fa-file-pdf drop-shadow-[0_0_5px_rgba(37,150,190,0.3)]"></i></div>
-                                        <h4 class="font-bold text-sm leading-snug">${policy}</h4>
+                                        <h4 class="font-bold text-sm leading-snug">${policy.name}</h4>
                                     </div>
                                     <div class="flex gap-3 w-full mt-auto">
-                                        <a href="#" class="flex-1 py-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-xs font-bold rounded-lg uppercase tracking-wider transition border border-black/10 dark:border-white/10 text-center backdrop-blur-sm active:scale-95"><i class="fa-solid fa-eye mr-1"></i> Ver PDF</a>
-                                        <a href="#" class="flex-1 py-3 bg-brand-cerulean/10 text-brand-cerulean hover:bg-brand-cerulean hover:text-white text-xs font-bold rounded-lg uppercase tracking-wider transition border border-brand-cerulean/30 text-center backdrop-blur-sm active:scale-95"><i class="fa-solid fa-download mr-1"></i> Descargar</a>
+                                        <a href="${fileUrl}" target="_blank" class="flex-1 py-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-xs font-bold rounded-lg uppercase tracking-wider transition border border-black/10 dark:border-white/10 text-center backdrop-blur-sm active:scale-95"><i class="fa-solid fa-eye mr-1"></i> Ver PDF</a>
+                                        <a href="${fileUrl}" download="${policy.file}" class="flex-1 py-3 bg-brand-cerulean/10 text-brand-cerulean hover:bg-brand-cerulean hover:text-white text-xs font-bold rounded-lg uppercase tracking-wider transition border border-brand-cerulean/30 text-center backdrop-blur-sm active:scale-95"><i class="fa-solid fa-download mr-1"></i> Descargar</a>
                                     </div>
                                 </div>
                             `);
@@ -765,22 +774,28 @@
         };
 
         /** 
-         * 3. Theme Toggle (Light/Dark Mode) 
+         * 3. Theme Toggle (Light/Dark Mode) Actualizado para soportar múltiples botones
          */
         const initThemeToggle = () => {
             const html = document.documentElement;
-            const themeBtn = document.getElementById('theme-toggle');
-            const themeIcon = document.getElementById('theme-icon');
+            // Seleccionar TODOS los botones e íconos (escritorio y móvil)
+            const themeBtns = document.querySelectorAll('.theme-toggle');
+            const themeIcons = document.querySelectorAll('.theme-icon');
             
             const updateIcon = () => {
                 const isDark = html.classList.contains('dark');
-                themeIcon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                themeIcons.forEach(icon => {
+                    icon.className = isDark ? 'theme-icon fa-solid fa-sun' : 'theme-icon fa-solid fa-moon';
+                });
             };
+            
             updateIcon(); 
 
-            themeBtn.addEventListener('click', () => {
-                html.classList.toggle('dark');
-                updateIcon();
+            themeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    html.classList.toggle('dark');
+                    updateIcon();
+                });
             });
         };
 
