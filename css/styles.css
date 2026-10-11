@@ -88,3 +88,20 @@ body {
     perspective: 1000px;
     will-change: transform;
 }
+
+.btn-tintineo {
+    animation: parpadeoFoco 1.5s infinite ease-in-out;
+}
+
+@keyframes parpadeoFoco {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 12px rgba(37, 211, 102, 0.6), 0 0 25px rgba(37, 211, 102, 0.8);
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        box-shadow: 0 0 4px rgba(37, 211, 102, 0.4);
+        transform: scale(0.97);
+    }
+}
