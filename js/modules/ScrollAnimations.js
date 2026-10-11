@@ -27,31 +27,41 @@ export class ScrollAnimations {
     }
 
     initServiceSVGAnimations() {
-        const tlElectricidad = gsap.timeline({ scrollTrigger: { trigger: ".trigger-electricidad", start: "top 80%" } });
-        tlElectricidad.to('.svg-anim-filament', { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut" })
-                      .to('.svg-anim-glow', { opacity: 0.8, duration: 0.5, ease: "power2.out" }, "-=0.5");
+        // Validamos si las clases existen antes de animarlas para evitar errores de GSAP en otras páginas
+        if (document.querySelector('.trigger-electricidad')) {
+            const tlElectricidad = gsap.timeline({ scrollTrigger: { trigger: ".trigger-electricidad", start: "top 80%" } });
+            tlElectricidad.to('.svg-anim-filament', { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut" })
+                          .to('.svg-anim-glow', { opacity: 0.8, duration: 0.5, ease: "power2.out" }, "-=0.5");
+        }
 
-        const tlGasfiteria = gsap.timeline({ scrollTrigger: { trigger: ".trigger-gasfiteria", start: "top 80%" } });
-        tlGasfiteria.to('.svg-anim-pipe', { strokeDashoffset: 0, duration: 1.5, ease: "power1.inOut" })
-                    .to('.svg-anim-drop', { opacity: 1, y: 10, duration: 0.5, yoyo: true, repeat: 3 }, "-=0.2");
+        if (document.querySelector('.trigger-gasfiteria')) {
+            const tlGasfiteria = gsap.timeline({ scrollTrigger: { trigger: ".trigger-gasfiteria", start: "top 80%" } });
+            tlGasfiteria.to('.svg-anim-pipe', { strokeDashoffset: 0, duration: 1.5, ease: "power1.inOut" })
+                        .to('.svg-anim-drop', { opacity: 1, y: 10, duration: 0.5, yoyo: true, repeat: 3 }, "-=0.2");
+        }
 
-        const tlPintura = gsap.timeline({ scrollTrigger: { trigger: ".trigger-pintura", start: "top 80%" } });
-        tlPintura.fromTo('.svg-anim-brush', 
-            { x: 10, y: 50, rotation: -20 },
-            { x: 90, y: 50, rotation: 20, duration: 1.5, ease: "power2.inOut" }, 0
-        ).to('.svg-anim-paint', { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut" }, 0);
+        if (document.querySelector('.trigger-pintura')) {
+            const tlPintura = gsap.timeline({ scrollTrigger: { trigger: ".trigger-pintura", start: "top 80%" } });
+            tlPintura.fromTo('.svg-anim-brush', 
+                { x: 10, y: 50, rotation: -20 },
+                { x: 90, y: 50, rotation: 20, duration: 1.5, ease: "power2.inOut" }, 0
+            ).to('.svg-anim-paint', { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut" }, 0);
+        }
 
-        const tlDrywall = gsap.timeline({ scrollTrigger: { trigger: ".trigger-drywall", start: "top 80%" } });
-        tlDrywall.to('.svg-anim-panel', { opacity: 1, y: -5, duration: 0.6, stagger: 0.2, ease: "back.out(1.7)" });
+        if (document.querySelector('.trigger-drywall')) {
+            const tlDrywall = gsap.timeline({ scrollTrigger: { trigger: ".trigger-drywall", start: "top 80%" } });
+            tlDrywall.to('.svg-anim-panel', { opacity: 1, y: -5, duration: 0.6, stagger: 0.2, ease: "back.out(1.7)" });
+        }
 
-        const tlAC = gsap.timeline({ scrollTrigger: { trigger: ".trigger-ac", start: "top 80%" } });
-        tlAC.to('.svg-anim-ac-led', { opacity: 1, duration: 0.3 })
-            .fromTo('.svg-anim-wind', 
-                { x: -10, opacity: 0 }, 
-                { x: 10, opacity: 0.8, duration: 1.2, stagger: 0.3, ease: "power1.inOut", repeat: -1, yoyo: true }
-            );
+        if (document.querySelector('.trigger-ac')) {
+            const tlAC = gsap.timeline({ scrollTrigger: { trigger: ".trigger-ac", start: "top 80%" } });
+            tlAC.to('.svg-anim-ac-led', { opacity: 1, duration: 0.3 })
+                .fromTo('.svg-anim-wind', 
+                    { x: -10, opacity: 0 }, 
+                    { x: 10, opacity: 0.8, duration: 1.2, stagger: 0.3, ease: "power1.inOut", repeat: -1, yoyo: true }
+                );
+        }
     }
-
     initCardInteractions() {
         const serviceCards = document.querySelectorAll('.trigger-service');
         serviceCards.forEach(card => {
