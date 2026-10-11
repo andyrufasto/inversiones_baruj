@@ -18,13 +18,18 @@ export class HeroBackground3D {
         this.currentRotX = 0;
         this.currentRotY = 0;
         
-        // Exponemos la velocidad globalmente para que GSAP pueda animarla
         window.hero3DSpeed = 1;
         this.isVisible = true;
     }
 
     init() {
         if (!this.container || !window.THREE) return;
+
+        // OCP: Lee los íconos del HTML. Si no hay, usa los por defecto.
+        const dataIcons = this.container.getAttribute('data-icons');
+        const icons = dataIcons 
+            ? dataIcons.split(',') 
+            : ['fa-bolt', 'fa-droplet', 'fa-paint-roller', 'fa-layer-group', 'fa-fan', 'fa-helmet-safety'];
 
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
@@ -39,14 +44,14 @@ export class HeroBackground3D {
         this.renderer.domElement.style.pointerEvents = 'none'; 
         this.container.appendChild(this.renderer.domElement);
 
-        const icons = ['fa-bolt', 'fa-droplet', 'fa-paint-roller', 'fa-layer-group', 'fa-fan', 'fa-helmet-safety'];
         this.particlesGroup = new THREE.Group();
 
         for (let i = 0; i < this.particlesCount; i++) {
             const el = document.createElement('i');
             const randomIcon = icons[Math.floor(Math.random() * icons.length)];
             
-            el.className = `fa-solid ${randomIcon} text-4xl text-brand-cerulean absolute drop-shadow-[0_0_8px_rgba(37,150,190,0.8)]`;
+            // Usamos el icono seleccionado dinámicamente
+            el.className = `fa-solid ${randomIcon.trim()} text-4xl text-brand-cerulean absolute drop-shadow-[0_0_8px_rgba(37,150,190,0.8)]`;
             el.style.opacity = 0.15 + Math.random() * 0.5;
 
             const object = new THREE.CSS3DObject(el);
@@ -73,6 +78,7 @@ export class HeroBackground3D {
         this.tick();
     }
 
+    // ... (Mantén addEventListeners y tick exactamente igual que en el código anterior) ...
     addEventListeners() {
         const windowHalfX = window.innerWidth / 2;
         const windowHalfY = window.innerHeight / 2;
@@ -88,6 +94,7 @@ export class HeroBackground3D {
             this.isVisible = entries[0].isIntersecting;
         }, { threshold: 0 });
         
+        // Comprueba primero que el elemento exista antes de observarlo
         const inicioSection = document.getElementById('inicio');
         if(inicioSection) observer.observe(inicioSection);
 
